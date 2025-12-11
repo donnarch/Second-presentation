@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pricing</title>
+    <link rel="stylesheet" href="./pricing.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-grid">
+        <h1 class="site-title"><a href="./index.html">HOME</a></h1>
+        <nav aria-label="Top">
+          <ul class="nav"></ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero container">
+        <div>
+          <h2>Simple, predictable pricing for everyone</h2>
+          <p class="lead">
+            Choose the plan that fits your needs. GIFs show product highlights —
+            replace them with your animated content.
+          </p>
+        </div>
+        <div class="billing-toggle" aria-hidden="false">
+          <span>Monthly</span>
+          <label class="switch" title="Toggle billing cycle">
+            <input
+              type="checkbox"
+              id="billing-toggle"
+              aria-label="Toggle annual billing (saves 20%)"
+            />
+            <span class="slider"></span>
+          </label>
+          <span>Annual <small class="muted">Save 20%</small></span>
+        </div>
+      </section>
+
+      <section
+        id="pricing"
+        class="container pricing-grid"
+        aria-label="Pricing plans"
+      >
+        <!-- Plan: Basic -->
+        <article class="card">
+          <div class="card-media">
+            <!-- Replace src with your GIF file -->
+            <img
+              src="./image/output.gif"
+              alt="Basic plan preview (replace with GIF)"
+              class="plan-gif"
+            />
+          </div>
+          <div class="card-body">
+            <h3>Basic</h3>
+            <p class="price" data-monthly="9" data-annual="86">
+              $<span class="price-value">9</span><span class="per">/mo</span>
+            </p>
+            <p class="muted">For individuals getting started</p>
+            <ul class="features"></ul>
+            <button
+              class="btn primary order-btn"
+              data-plan="Basic"
+              data-monthly="9"
+              data-annual="86"
+            >
+              Order Now
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan: Pro -->
+        <article class="card featured" aria-describedby="most-popular">
+          <div class="badge">Most Popular</div>
+          <div class="card-media">
+            <img
+              src="./image/output.gif"
+              alt="Pro plan preview (replace with GIF)"
+              class="plan-gif"
+            />
+          </div>
+          <div class="card-body">
+            <h3>Pro</h3>
+            <p class="price" data-monthly="29" data-annual="290">
+              $<span class="price-value">29</span><span class="per">/mo</span>
+            </p>
+            <p class="muted">For professionals and small teams</p>
+            <ul class="features"></ul>
+            <button
+              class="btn primary order-btn"
+              data-plan="Pro"
+              data-monthly="29"
+              data-annual="290"
+            >
+              Order Now
+            </button>
+          </div>
+        </article>
+
+        <!-- Plan: Enterprise -->
+        <article class="card">
+          <div class="card-media">
+            <img
+              src="./image/output.gif"
+              alt="Enterprise plan preview (replace with GIF)"
+              class="plan-gif"
+            />
+          </div>
+          <div class="card-body">
+            <h3>Enterprise</h3>
+            <p class="price" data-monthly="99" data-annual="999">
+              $<span class="price-value">99</span><span class="per">/mo</span>
+            </p>
+            <p class="muted">For large teams and businesses</p>
+            <ul class="features"></ul>
+            <button
+              class="btn primary order-btn"
+              data-plan="Basic"
+              data-monthly="9"
+              data-annual="86"
+            >
+              Order Now
+            </button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <p>
+        &copy; <span id="year"></span> YourCompany — <a href="#">Terms</a> ·
+        <a href="#">Privacy</a>
+      </p>
+    </footer>
+
+    <!-- Order Modal -->
+    <div
+      class="modal"
+      id="order-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="order-title"
+      hidden
+    >
+      <div class="modal-backdrop" id="backdrop"></div>
+      <div class="modal-panel" role="document">
+        <button class="modal-close" id="modal-close" aria-label="Close dialog">
+          &times;
+        </button>
+        <h3 id="order-title">Order — <span id="order-plan">Plan</span></h3>
+        <form id="order-form">
+          <p class="muted" id="order-description">Order details</p>
+
+          <label for="customer-name">Name</label>
+          <input id="customer-name" name="name" type="text" required />
+
+          <label for="customer-email">Email</label>
+          <input id="customer-email" name="email" type="email" required />
+
+          <label for="quantity">Quantity</label>
+          <input
+            id="quantity"
+            name="quantity"
+            type="number"
+            min="1"
+            value="1"
+            required
+          />
+
+          <label for="billing">Billing</label>
+          <select id="billing" name="billing">
+            <option value="monthly">Monthly</option>
+            <option value="annual">Annual (save 20%)</option>
+          </select>
+
+          <label for="promo">Promo code</label>
+          <input id="promo" name="promo" type="text" placeholder="PROMO10" />
+
+          <div class="order-summary">
+            <p>Price per unit: <strong id="summary-unit">$0</strong></p>
+            <p>Quantity: <strong id="summary-qty">1</strong></p>
+            <p>Total: <strong id="summary-total">$0</strong></p>
+          </div>
+
+          <button class="btn primary" type="submit">Place Order</button>
+          <div id="order-message" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./pricing.js" defer></script>
+  </body>
+</html>
