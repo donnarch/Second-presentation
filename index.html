@@ -24,7 +24,6 @@
       rel="stylesheet"
     />
     <style>
-      /* ===== Base & Reset ===== */
       * {
         margin: 0;
         padding: 0;
@@ -37,33 +36,16 @@
         --white: #ffffff;
         --accent-copper: #d4a574;
         --muted: #6b6b6b;
-        --light-bg: #f8f9fa;
-
-        /* IMPORTANT: global text color: dark green in light mode, white in dark mode */
-        --text-color: white
-
-        /* nav link color (keeps white on dark nav background) */
+        --text-color: #1f4d38;
         --nav-link-color: var(--white);
-
-        --glass: rgba(255, 255, 255, 0.06);
       }
-
-      /* Dark mode overrides */
-      body.dark-mode {
-        --white: #0f1112;
-        --text-color: #ffffff; /* global text becomes white in dark mode */
-        --light-bg: #1f1f1f;
-        --nav-link-color: #ffffff;
-        --glass: rgba(255, 255, 255, 0.02);
-      }
-
       html {
         scroll-behavior: smooth;
       }
       body {
         font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background: var(--white);
-        color: var(--text-color); /* global text color uses the variable */
+        color: var(--text-color);
         overflow-x: hidden;
         transition: background 300ms ease, color 300ms ease;
         -webkit-font-smoothing: antialiased;
@@ -71,7 +53,7 @@
         line-height: 1.6;
       }
 
-      /* ===== Navigation ===== */
+      /* Navigation */
       nav {
         position: fixed;
         top: 0;
@@ -112,8 +94,6 @@
         color: var(--white);
         font-weight: 800;
       }
-
-      /* Desktop menu */
       nav ul {
         list-style: none;
         display: flex;
@@ -128,14 +108,11 @@
         border-radius: 8px;
         font-size: 0.95rem;
         transition: all 0.18s ease;
-        position: relative;
       }
       nav a:hover {
         transform: translateY(-3px);
         background: rgba(255, 255, 255, 0.03);
       }
-
-      /* Mobile menu button */
       .nav-toggle {
         display: none;
         background: transparent;
@@ -148,8 +125,6 @@
         justify-content: center;
         cursor: pointer;
       }
-
-      /* mobile menu (hidden by default) */
       .mobile-menu {
         display: none;
         position: absolute;
@@ -168,27 +143,7 @@
         display: block;
       }
 
-      /* ===== Dark Mode Toggle ===== */
-      .dark-mode-toggle {
-        background: linear-gradient(
-          135deg,
-          var(--primary-green),
-          var(--dark-green)
-        );
-        border: none;
-        color: var(--white);
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 8px 25px rgba(45, 106, 82, 0.25);
-        transition: transform 0.25s ease;
-      }
-
-      /* ===== Hero ===== */
+      /* Hero */
       .hero {
         padding: 8rem 1.5rem 4rem;
         text-align: center;
@@ -248,14 +203,13 @@
         transition: transform 0.18s ease, box-shadow 0.18s ease;
         text-decoration: none;
         display: inline-block;
-
       }
       .cta-button:hover {
         transform: translateY(-3px);
         box-shadow: 0 16px 46px rgba(212, 165, 116, 0.28);
       }
 
-      /* ===== Full width sections, content, stats & features ===== */
+      /* Container & Sections */
       .container {
         max-width: 1400px;
         margin: 0 auto;
@@ -279,16 +233,14 @@
         font-size: 2.4rem;
         font-weight: 800;
         margin-bottom: 0.6rem;
-        color: var(--text-color);
+        color: white;
       }
       .content-left p {
         font-size: 1.05rem;
         line-height: 1.8;
-        color: var(--text-color);
+        color: white;
         opacity: 0.98;
       }
-
-      /* Make product/illustration images a bit smaller for better balance */
       .content-right {
         display: flex;
         align-items: center;
@@ -301,8 +253,8 @@
         );
       }
       .content-right img {
-        width: 65%; /* reduced from ~85% to 65% */
-        max-width: 480px; /* cap image width */
+        width: 65%;
+        max-width: 480px;
         height: auto;
         object-fit: contain;
         border-radius: 10px;
@@ -442,7 +394,6 @@
         color: rgba(255, 255, 255, 0.92);
         font-size: 0.95rem;
       }
-
       .contact-right {
         background: linear-gradient(
           180deg,
@@ -583,9 +534,10 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         cursor: pointer;
         z-index: 999;
+        border: none;
       }
 
-      /* Responsive behavior */
+      /* Responsive */
       @media (max-width: 1100px) {
         .features-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -602,9 +554,12 @@
         .contact {
           grid-template-columns: 1fr;
         }
+        .hero h1 {
+          font-size: 2.6rem;
+        }
       }
-      @media (max-width: 700px) {
-        /* hide desktop menu, show toggle */
+
+      @media (max-width: 768px) {
         nav ul {
           display: none;
         }
@@ -614,8 +569,21 @@
         .brand {
           gap: 0.5rem;
         }
+        .hero {
+          padding: 6rem 1rem 3rem;
+        }
         .hero h1 {
           font-size: 2rem;
+          letter-spacing: 1px;
+        }
+        .hero p {
+          font-size: 1rem;
+        }
+        .content-left {
+          padding: 2rem 1.5rem;
+        }
+        .content-left h2 {
+          font-size: 1.8rem;
         }
         .features-grid {
           grid-template-columns: 1fr;
@@ -626,15 +594,74 @@
         .stats-grid {
           grid-template-columns: 1fr;
         }
-
-        /* mobile image sizing */
         .content-right img {
           width: 85%;
           max-width: 360px;
         }
+        .contact {
+          min-height: auto;
+        }
+        .contact-left {
+          padding: 2rem 1.5rem;
+        }
+        .contact-right {
+          padding: 2rem 1.5rem;
+        }
+        .footer-inner {
+          gap: 1rem;
+        }
       }
 
-      /* utilities & animations */
+      @media (max-width: 480px) {
+        .hero {
+          padding: 5rem 1rem 2rem;
+          margin-top: 56px;
+        }
+        .hero h1 {
+          font-size: 1.6rem;
+        }
+        .badge {
+          font-size: 0.85rem;
+          padding: 0.35rem 0.6rem;
+        }
+        .content-left {
+          padding: 1.5rem 1rem;
+        }
+        .content-left h2 {
+          font-size: 1.5rem;
+        }
+        .content-left p {
+          font-size: 0.95rem;
+        }
+        .stats {
+          padding: 2rem 1rem;
+        }
+        .stat-card {
+          padding: 1rem;
+        }
+        .stat-number {
+          font-size: 1.5rem;
+        }
+        .features {
+          padding: 2.5rem 1rem;
+        }
+        .feature-card {
+          padding: 1rem;
+        }
+        .feature-icon {
+          font-size: 1.4rem;
+        }
+        .contact-left {
+          padding: 1.5rem 1rem;
+        }
+        .contact-left h2 {
+          font-size: 1.8rem;
+        }
+        .contact-item {
+          padding: 0.75rem;
+        }
+      }
+
       .sr-only {
         position: absolute;
         width: 1px;
@@ -657,34 +684,10 @@
     </style>
   </head>
   <body>
-    <!-- Dark Mode Toggle & Nav Toggle wrapper -->
-    <div
-      style="
-        position: fixed;
-        top: 12px;
-        right: 12px;
-        z-index: 1200;
-        display: flex;
-        gap: 0.6rem;
-        align-items: center;
-      "
-    >
-      <button
-        aria-pressed="false"
-        id="darkModeToggle"
-        class="dark-mode-toggle"
-        title="Toggle dark mode"
-        aria-label="Toggle dark mode"
-      >
-        🌙
-      </button>
-    </div>
-
-    <!-- Navigation -->
     <nav role="navigation" aria-label="Main Navigation">
       <div class="nav-inner container">
-        <a href="#home" class="brand" aria-label="Bright Light Innovation home">
-          <div class="logo" aria-hidden="true">BL</div>
+        <a href="#home" class="brand">
+          <div class="logo">BL</div>
           <div>
             <div style="font-weight: 800; color: var(--white)">
               Bright Light
@@ -700,48 +703,18 @@
             </div>
           </div>
         </a>
-
-        <!-- Desktop links -->
-        <ul role="menubar" aria-label="Primary" id="navLinks">
-          <li role="none"><a role="menuitem" href="#home">Home</a></li>
-          <li role="none">
-            <a role="menuitem" href="#introduction">Innovation</a>
-          </li>
-          <li role="none">
-            <a role="menuitem" href="#performance">Performance</a>
-          </li>
-          <li role="none"><a role="menuitem" href="#features">Features</a></li>
-          <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
-          <li role="none">
-            <a role="menuitem" href="./pricing.html">Pricing list</a>
-          </li>
+        <ul role="menubar" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#introduction">Innovation</a></li>
+          <li><a href="#performance">Performance</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="./pricing.html">Pricing</a></li>
         </ul>
-
         <div style="display: flex; gap: 0.6rem; align-items: center">
-          <a
-            class="cta-button"
-            href="#contact"
-            aria-label="Get in touch"
-            style="display: inline-block"
-            >Get In Touch</a
-          >
-
-          <!-- mobile nav toggle -->
-          <button
-            id="navToggle"
-            class="nav-toggle"
-            aria-label="Open menu"
-            aria-expanded="false"
-            title="Open menu"
-          >
-            <svg
-              width="18"
-              height="14"
-              viewBox="0 0 18 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
+          <a class="cta-button" href="#contact">Get In Touch</a>
+          <button id="navToggle" class="nav-toggle">
+            <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
               <rect width="18" height="2" rx="1" fill="white" />
               <rect y="6" width="18" height="2" rx="1" fill="white" />
               <rect y="12" width="18" height="2" rx="1" fill="white" />
@@ -749,17 +722,13 @@
           </button>
         </div>
       </div>
-
-      <!-- mobile menu content (renders on small screens when toggled) -->
-      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+      <div id="mobileMenu" class="mobile-menu">
         <ul
           style="
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
-            margin: 0;
-            padding: 0;
           "
         >
           <li>
@@ -817,55 +786,56 @@
               >Contact</a
             >
           </li>
+          <li>
+            <a
+              href="./pricing.html"
+              style="
+                color: var(--nav-link-color);
+                padding: 0.8rem 0;
+                display: block;
+              "
+              >Pricing list</a
+            >
+          </li>
         </ul>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home" aria-labelledby="hero-heading">
+    <section class="hero" id="home">
       <div class="hero-inner">
         <div class="badge">New • DualGlow Series</div>
-        <h1 id="hero-heading">BRIGHT LIGHT INNOVATION</h1>
+        <h1>BRIGHT LIGHT INNOVATION</h1>
         <p>
           Revolutionary Eco-Friendly Lighting Solutions that combine solar and
           saltwater technology for dependable, zero-e-waste illumination
           anywhere.
         </p>
-        <a href="#contact" class="cta-button" aria-label="Contact Bright Light"
-          >Get In Touch Today</a
-        >
+        <a href="#contact" class="cta-button">Get In Touch Today</a>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats container reveal" aria-labelledby="stats-heading">
-      <h2 id="stats-heading" class="sr-only">Company Stats</h2>
-      <div class="stats-grid" role="list">
-        <div class="stat-card" role="listitem">
+    <section class="stats container reveal">
+      <div class="stats-grid">
+        <div class="stat-card">
           <div class="stat-number" data-target="100">0%</div>
           <div class="stat-label">Eco-Friendly Technology</div>
         </div>
-        <div class="stat-card" role="listitem">
+        <div class="stat-card">
           <div class="stat-number" data-target="24">0</div>
           <div class="stat-label">Reliable Performance (hrs/day)</div>
         </div>
-        <div class="stat-card" role="listitem">
+        <div class="stat-card">
           <div class="stat-number" data-target="5">0+</div>
           <div class="stat-label">Years Development</div>
         </div>
-        <div class="stat-card" role="listitem">
+        <div class="stat-card">
           <div class="stat-number" data-target="180">0+</div>
           <div class="stat-label">Countries Reached</div>
         </div>
       </div>
     </section>
 
-    <!-- Introduction Section -->
-    <section
-      class="full-section reveal"
-      id="introduction"
-      aria-labelledby="intro-heading"
-    >
+    <section class="full-section reveal" id="introduction">
       <div
         class="content-left"
         style="
@@ -877,21 +847,19 @@
           color: var(--white);
         "
       >
-        <h2 id="intro-heading">TEAM MEMEBERS</h2>
+        <h2>TEAM MEMBERS</h2>
         <p>Diyorbek, Muhammadali, Jalol, Tohir, Bilol</p>
       </div>
       <div class="content-right">
-        <!-- image reduced in size with max-width applied -->
-        <img loading="" src="./image/image copy.png" alt="Solar garden light" />
+        <img
+          loading="lazy"
+          src="./image/image copy.png"
+          alt="Solar garden light"
+        />
       </div>
     </section>
 
-    <!-- Reliable Performance -->
-    <section
-      class="full-section alt reveal"
-      id="performance"
-      aria-labelledby="perf-heading"
-    >
+    <section class="full-section alt reveal" id="performance">
       <div class="content-right">
         <img
           loading="lazy"
@@ -910,7 +878,7 @@
           color: var(--text-color);
         "
       >
-        <h2 id="perf-heading">Reliable Performance</h2>
+        <h2>Reliable Performance</h2>
         <p style="color: var(--muted)">
           Ensuring functionality in diverse weather and outdoor conditions
         </p>
@@ -918,15 +886,13 @@
           Our innovative <strong>DualGlow Lamp</strong> guarantees
           <strong>unwavering reliability</strong> in all weather conditions,
           making it the perfect solution for camping, hiking, and off-grid
-          living, no matter the environment.
+          living.
         </p>
       </div>
     </section>
 
-    <!-- Problem Statement -->
     <section
       class="full-section reveal"
-      aria-labelledby="problem-heading"
       style="background: linear-gradient(180deg, var(--white), var(--light-bg))"
     >
       <div
@@ -940,7 +906,7 @@
           color: var(--white);
         "
       >
-        <h2 id="problem-heading">Problem Statement</h2>
+        <h2>Problem Statement</h2>
         <p>
           Solar-only lamps face <strong>significant challenges</strong> due to
           their unreliability in cloudy or rainy conditions. These limitations
@@ -952,7 +918,6 @@
       </div>
     </section>
 
-    <!-- Environmental Impact -->
     <section class="full-section alt reveal">
       <div class="content-right">
         <img
@@ -983,7 +948,6 @@
       </div>
     </section>
 
-    <!-- Innovative Solution -->
     <section class="full-section reveal">
       <div
         class="content-left"
@@ -1012,10 +976,9 @@
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features" aria-labelledby="features-heading">
+    <section class="features" id="features">
       <div class="container">
-        <h2 id="features-heading">Why Choose BRIGHT LIGHT?</h2>
+        <h2>Why Choose BRIGHT LIGHT?</h2>
         <div class="features-grid reveal">
           <div class="feature-card">
             <div class="feature-icon">⚡</div>
@@ -1069,11 +1032,9 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="testimonials reveal" aria-labelledby="testimonials-heading">
+    <section class="testimonials reveal">
       <div class="container">
         <h2
-          id="testimonials-heading"
           style="
             text-align: center;
             margin-bottom: 1.6rem;
@@ -1089,11 +1050,14 @@
               any lamp we've deployed. No more battery shipments!"
             </p>
             <div
-              class="test-author"
-              style="display: flex; gap: 0.8rem; align-items: center"
+              style="
+                display: flex;
+                gap: 0.8rem;
+                align-items: center;
+                margin-top: 1rem;
+              "
             >
               <div
-                class="author-img"
                 style="
                   width: 44px;
                   height: 44px;
@@ -1125,11 +1089,14 @@
               bright even on cloudy days."
             </p>
             <div
-              class="test-author"
-              style="display: flex; gap: 0.8rem; align-items: center"
+              style="
+                display: flex;
+                gap: 0.8rem;
+                align-items: center;
+                margin-top: 1rem;
+              "
             >
               <div
-                class="author-img"
                 style="
                   width: 44px;
                   height: 44px;
@@ -1161,11 +1128,14 @@
               shining. Military-grade indeed."
             </p>
             <div
-              class="test-author"
-              style="display: flex; gap: 0.8rem; align-items: center"
+              style="
+                display: flex;
+                gap: 0.8rem;
+                align-items: center;
+                margin-top: 1rem;
+              "
             >
               <div
-                class="author-img"
                 style="
                   width: 44px;
                   height: 44px;
@@ -1195,12 +1165,10 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <section class="contact" id="contact">
       <div class="contact-left">
-        <h2 id="contact-heading">Contact Us</h2>
-
-        <div class="contact-item" aria-hidden="false">
+        <h2>Contact Us</h2>
+        <div class="contact-item">
           <span class="contact-icon">★</span>
           <div>
             <h3>BRIGHT LIGHT INNOVATION</h3>
@@ -1217,7 +1185,6 @@
             </p>
           </div>
         </div>
-
         <div class="contact-item">
           <span class="contact-icon">★</span>
           <div>
@@ -1225,7 +1192,6 @@
             <p>Suyeong-ro 325beon-gil, Nam-gu, Busan, South Korea</p>
           </div>
         </div>
-
         <div class="contact-item">
           <span class="contact-icon">★</span>
           <div>
@@ -1242,7 +1208,6 @@
             </p>
           </div>
         </div>
-
         <div class="contact-item">
           <span class="contact-icon">★</span>
           <div>
@@ -1252,10 +1217,9 @@
         </div>
       </div>
 
-      <div class="contact-right" aria-hidden="false">
-        <form id="contactForm" class="contact-form" aria-label="Contact form">
+      <div class="contact-right">
+        <form id="contactForm" class="contact-form">
           <h3>Send us a message</h3>
-
           <div class="form-group">
             <label for="name">Full name</label>
             <input
@@ -1264,10 +1228,8 @@
               type="text"
               placeholder="Your full name"
               required
-              aria-required="true"
             />
           </div>
-
           <div class="form-group">
             <label for="email">Email address</label>
             <input
@@ -1276,20 +1238,17 @@
               type="email"
               placeholder="you@example.com"
               required
-              aria-required="true"
             />
           </div>
-
           <div class="form-group">
             <label for="topic">Topic</label>
-            <select id="topic" name="topic" aria-label="Inquiry topic">
+            <select id="topic" name="topic">
               <option value="general">General Inquiry</option>
               <option value="sales">Sales</option>
               <option value="support">Support</option>
               <option value="partnerships">Partnerships</option>
             </select>
           </div>
-
           <div class="form-group">
             <label for="message">Message</label>
             <textarea
@@ -1297,10 +1256,8 @@
               name="message"
               placeholder="Tell us what you need"
               required
-              aria-required="true"
             ></textarea>
           </div>
-
           <div
             style="
               display: flex;
@@ -1316,26 +1273,21 @@
               >Subscribe to newsletter</label
             >
           </div>
-
           <button type="submit" class="form-submit" id="submitBtn">
             Send Message
           </button>
-
           <div
             id="formMessage"
-            class="form-message"
-            role="status"
-            aria-live="polite"
+            style="margin-top: 1rem; text-align: center"
           ></div>
         </form>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer aria-labelledby="footer-heading">
+    <footer>
       <div class="container footer-inner">
         <div class="footer-col" style="max-width: 420px">
-          <h4 id="footer-heading">Bright Light Innovation</h4>
+          <h4>Bright Light Innovation</h4>
           <p style="color: rgba(255, 255, 255, 0.85)">
             Designing eco-forward lighting solutions that perform when you need
             them and reduce waste for the planet.
@@ -1379,24 +1331,20 @@
             </li>
           </ul>
         </div>
-
         <div class="footer-col">
           <h4 style="color: var(--white)">Follow us</h4>
           <div class="socials" role="list">
-            <a href="#" aria-label="Twitter" title="Twitter"
+            <a href="#" title="Twitter"
               ><i class="fa-brands fa-square-twitter"></i
             ></a>
-            <a href="#" aria-label="LinkedIn" title="LinkedIn"
+            <a href="#" title="LinkedIn"
               ><i class="fa-brands fa-square-linkedin"></i
             ></a>
-            <a href="#" aria-label="Instagram" title="Instagram"
+            <a href="#" title="Instagram"
               ><i class="fa-brands fa-square-instagram"></i
             ></a>
           </div>
-          <div
-            style="margin-top: 0.8rem; color: rgba(255, 255, 255, 0.85)"
-            class="small"
-          >
+          <div style="margin-top: 0.8rem; color: rgba(255, 255, 255, 0.85)">
             © <span id="year"></span> Bright Light Innovation · All rights
             reserved
           </div>
@@ -1404,191 +1352,153 @@
       </div>
     </footer>
 
-    <!-- Back to top -->
-    <button
-      id="toTop"
-      class="to-top"
-      aria-label="Back to top"
-      title="Back to top"
-    >
-      ↑
-    </button>
+    <button id="toTop" class="to-top" title="Back to top">↑</button>
 
     <script>
-      // Utilities
-      const $ = (sel, ctx = document) => ctx.querySelector(sel);
-      const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+      /* =========================
+   HELPER SELECTORS
+========================= */
+      const $ = (sel) => document.querySelector(sel);
+      const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-      // Dark mode toggle with persistence
-      (function () {
-        const btn = $("#darkModeToggle");
-        const prefer = localStorage.getItem("bli:theme");
-        const body = document.body;
-        if (prefer === "dark") {
-          body.classList.add("dark-mode");
-          btn.textContent = "🌞";
-          btn.setAttribute("aria-pressed", "true");
-        }
-        function toggle() {
-          const isDark = body.classList.toggle("dark-mode");
-          btn.textContent = isDark ? "🌞" : "🌙";
-          btn.setAttribute("aria-pressed", String(isDark));
-          localStorage.setItem("bli:theme", isDark ? "dark" : "light");
-
-          // adjust nav link variable for older inline styles if needed
-          document.documentElement.style.setProperty(
-            "--nav-link-color",
-            isDark ? "#ffffff" : "var(--white)"
-          );
-        }
-        btn.addEventListener("click", toggle);
-      })();
-
-      // Mobile nav toggle behaviour
+      /* =========================
+   MOBILE NAVIGATION
+========================= */
       (function () {
         const navToggle = $("#navToggle");
         const mobileMenu = $("#mobileMenu");
+
+        if (!navToggle || !mobileMenu) return;
+
         navToggle.addEventListener("click", () => {
-          const open = mobileMenu.classList.toggle("open");
-          navToggle.setAttribute("aria-expanded", String(open));
-          mobileMenu.setAttribute("aria-hidden", String(!open));
+          mobileMenu.classList.toggle("open");
         });
-        // close mobile menu when link clicked
-        mobileMenu.querySelectorAll("a").forEach((a) =>
-          a.addEventListener("click", () => {
+
+        mobileMenu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
             mobileMenu.classList.remove("open");
-            navToggle.setAttribute("aria-expanded", "false");
-            mobileMenu.setAttribute("aria-hidden", "true");
-          })
-        );
+          });
+        });
       })();
 
-      // Back to top
+      /* =========================
+   BACK TO TOP BUTTON
+========================= */
       (function () {
         const toTop = $("#toTop");
-        toTop.addEventListener("click", () =>
-          window.scrollTo({ top: 0, behavior: "smooth" })
-        );
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 400) toTop.style.display = "grid";
-          else toTop.style.display = "none";
-        });
+        if (!toTop) return;
+
         toTop.style.display = "none";
+
+        toTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        window.addEventListener("scroll", () => {
+          toTop.style.display = window.scrollY > 300 ? "grid" : "none";
+        });
       })();
 
-      // Reveal on scroll
+      /* =========================
+   SCROLL REVEAL ANIMATION
+========================= */
       (function () {
         const reveals = $$(".reveal");
-        const io = new IntersectionObserver(
+        if (!reveals.length) return;
+
+        const observer = new IntersectionObserver(
           (entries) => {
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add("visible");
-                io.unobserve(e.target);
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
               }
             });
           },
           { threshold: 0.12 }
         );
-        reveals.forEach((r) => io.observe(r));
+
+        reveals.forEach((el) => observer.observe(el));
       })();
 
-      // Animated stat counters
+      /* =========================
+   STATS COUNTER
+========================= */
       (function () {
         const counters = $$(".stat-number");
+        const statSection = $(".stats");
+        if (!counters.length || !statSection) return;
+
         let started = false;
+
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
         const startCounters = () => {
-          counters.forEach((el) => {
-            const target = parseFloat(el.getAttribute("data-target")) || 0;
-            let duration = 1200;
-            let start = null;
-            const from = 0;
-            const to = target;
-            function step(ts) {
-              if (!start) start = ts;
-              const progress = Math.min((ts - start) / duration, 1);
-              const val = Math.round(
-                from + (to - from) * easeOutCubic(progress)
-              );
-              // keep percent on the first card
-              if (el.dataset.target === "100") el.textContent = val + "%";
-              else el.textContent = val;
-              if (progress < 1) requestAnimationFrame(step);
+          counters.forEach((counter) => {
+            const target = Number(counter.dataset.target);
+            let startTime = null;
+
+            function update(timestamp) {
+              if (!startTime) startTime = timestamp;
+              const progress = Math.min((timestamp - startTime) / 1200, 1);
+              const value = Math.round(target * easeOutCubic(progress));
+
+              counter.textContent = target === 100 ? value + "%" : value;
+
+              if (progress < 1) {
+                requestAnimationFrame(update);
+              }
             }
-            requestAnimationFrame(step);
+
+            requestAnimationFrame(update);
           });
         };
-        function easeOutCubic(t) {
-          return 1 - Math.pow(1 - t, 3);
-        }
-        const statSection = $(".stats");
-        if (statSection) {
-          const io = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((e) => {
-                if (e.isIntersecting && !started) {
-                  started = true;
-                  startCounters();
-                  io.disconnect();
-                }
-              });
-            },
-            { threshold: 0.2 }
-          );
-          io.observe(statSection);
-        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (entries[0].isIntersecting && !started) {
+              started = true;
+              startCounters();
+              observer.disconnect();
+            }
+          },
+          { threshold: 0.2 }
+        );
+
+        observer.observe(statSection);
       })();
 
-      // Contact form: basic validation + simulated submission
+      /* =========================
+   CONTACT FORM VALIDATION
+========================= */
       (function () {
         const form = $("#contactForm");
-        const msg = $("#formMessage");
-        const btn = $("#submitBtn");
-        function validateEmail(email) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        }
+        if (!form) return;
+
         form.addEventListener("submit", (e) => {
           e.preventDefault();
-          msg.className = "form-message";
-          const name = form.name.value.trim();
-          const email = form.email.value.trim();
-          const message = form.message.value.trim();
-          if (!name || !email || !message) {
-            msg.textContent = "Please fill in all required fields.";
-            msg.classList.add("error");
+
+          const name = form.querySelector("input[name='name']");
+          const email = form.querySelector("input[name='email']");
+          const message = form.querySelector("textarea[name='message']");
+
+          if (!name.value.trim()) {
+            alert("Please enter your name");
             return;
           }
-          if (!validateEmail(email)) {
-            msg.textContent = "Please enter a valid email address.";
-            msg.classList.add("error");
+
+          if (!email.value.trim() || !email.value.includes("@")) {
+            alert("Please enter a valid email");
             return;
           }
-          btn.disabled = true;
-          btn.textContent = "Sending...";
-          setTimeout(() => {
-            msg.textContent =
-              "Thanks! Your message has been received — we will get back within 1-2 business days.";
-            msg.className = "form-message success";
-            form.reset();
-            btn.disabled = false;
-            btn.textContent = "Send Message";
-          }, 1100);
-        });
-      })();
 
-      // Fill copyright year
-      document.getElementById("year").textContent = new Date().getFullYear();
+          if (!message.value.trim()) {
+            alert("Please enter a message");
+            return;
+          }
 
-      // Smooth keyboard activation for cta buttons
-      (function () {
-        const ctas = $$(".cta-button");
-        ctas.forEach((cta) => {
-          cta.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              cta.click();
-            }
-          });
+          alert("Message sent successfully!");
+          form.reset();
         });
       })();
     </script>
